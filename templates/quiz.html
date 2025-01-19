@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form method="POST" action="/result">
+        {% for question in questions %}
+        <h2>{{ question.question }}</h2>
+        <input type="radio" name="question{{ loop.index }}" value="{{ question.option1 }}"> {{ question.option1 }}<br>
+        <input type="radio" name="question{{ loop.index }}" value="{{ question.option2 }}"> {{ question.option2 }}<br>
+        <input type="radio" name="question{{ loop.index }}" value="{{ question.option3 }}"> {{ question.option3 }}<br>
+        {% endfor %}
+        
+        <br>
+        <input type="submit" value="Submit Answers">
+
+        <div style="position: absolute; top: 10px; right: 10px;">
+            <p>Best Score: {{ best_score }}%</p>
+        </div>
+    </form>
+
+    <footer>
+        Developed by: Beyza Nur Büyükdemir
+    </footer>
+</body>
+</html>
